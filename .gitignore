@@ -1,4 +1,9 @@
 node_modules
 AppiumFramework/screenshots/
 AppiumFramework/reports/
-.pytest_cache
+.pytest_cache/
+Code2LEad.log
+AppiumFramework/tests/.pytest_cache/
+AppiumFramework/tests/__pycache__/
+AppiumFramework/base/__pycache__/
+AppiumFramework/pages/__pycache__/
