@@ -1,6 +1,6 @@
 node_modules
 AppiumFramework/screenshots/
-AppiumFramework/reports/
+AppiumFramework/reports/allureReports/
 .pytest_cache/
 Code2LEad.log
 AppiumFramework/tests/.pytest_cache/
