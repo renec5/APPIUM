@@ -1,3 +1,4 @@
 node_modules
-AppiumFramework/screenshots
+AppiumFramework/screenshots/
 AppiumFramework/reports/
+.pytest_cache

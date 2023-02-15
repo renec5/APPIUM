@@ -33,6 +33,7 @@ class LoginPage(BasePage):
     def enterCredentials(self, email, password, invalidLogin=False):
         self.enterEmail(email)
         self.enterPassword(password)
+        self.log(f"{email} - {password} entered correctly on their respective fields", True)
         self.clickSubmitBtn()
         if invalidLogin:
             errorFlagDisplayed = self.isDisplayed(self._wrongCredentialsFlagMsg, 'text')

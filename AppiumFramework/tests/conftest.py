@@ -1,3 +1,4 @@
+import time
 import pytest
 import shutil
 import os
@@ -7,11 +8,6 @@ from AppiumFramework.base.DriverClass import Driver
 def oneTimeSetUp(request):
     driver1 = Driver()
     driver = driver1.getDriverMethod()
-    reportsFilesPath = "/Users/rene.cortes/PycharmProjects/AppiumPython/AppiumFramework/reports/allureReports"
-    shutil.rmtree(reportsFilesPath)
-    os.mkdir(reportsFilesPath)
-
-
 
     if request.cls is not None:
         request.cls.driver = driver
@@ -20,5 +16,9 @@ def oneTimeSetUp(request):
     driver.quit()
 
 @pytest.fixture(scope="session")
-def cleanReportFolder():
-    shutil.rmtree("../reports/allureReports")
+def cleanLogs():
+    logFile = open("Code2LEad.log", 'w')
+    logFile.close()
+    shutil.rmtree("/Users/rene.cortes/PycharmProjects/AppiumPython/AppiumFramework/reports/allureReports")
+    # time.sleep(5)
+    os.mkdir("/Users/rene.cortes/PycharmProjects/AppiumPython/AppiumFramework/reports/allureReports")
