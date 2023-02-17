@@ -28,5 +28,10 @@ class EnterSomeValuePage(BasePage):
         self.clickElement(self._submitBtn)
         CL.allureLogs("Submit button clicked successfully on entersome value section")
 
+    def validateSubmittedText(self, textToVAlidate):
+        assert True == self.isDisplayed(textToVAlidate, "text")
+        self.log(f"{textToVAlidate} has been submitted correctly", True)
+        CL.allureLogs(f"{textToVAlidate} has been submitted correctly")
+
 
 

@@ -16,11 +16,13 @@ class TestContactUsForm(unittest.TestCase):
         self.CM = CommonMethods()
 
     @pytest.mark.sanity
-    def test_1(self):
+    @pytest.mark.regression
+    def test_enter_some_value(self):
         self.CM.printTestname("Test1")
+        textToEnter = "test"
         self.MP.clickEnterSomeValue()
         self.ESVP.validateContactUsFormLandingPage()
-        self.ESVP.enterSomeValueText("This is just a test")
+        self.ESVP.enterSomeValueText(textToEnter)
         self.ESVP.clickSubmitBtn()
 
 

@@ -21,8 +21,8 @@ wait = WebDriverWait(driver, 15, poll_frequency=.5)
 
 TA = TouchAction(driver)
 
-tabView = wait.until(EC.element_to_be_clickable((By.XPATH, '//android.widget.Button[@resource-id="com.code2lead.kwad:id/TabView"]')))
-tabView.click()
+tabActivity = wait.until(EC.element_to_be_clickable((By.XPATH, '//android.widget.Button[@resource-id="com.code2lead.kwad:id/TabView"]')))
+tabActivity.click()
 
 windowSize = driver.get_window_size()
 print("Window Size: {0}".format(windowSize))

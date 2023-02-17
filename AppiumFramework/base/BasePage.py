@@ -7,6 +7,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import AppiumFramework.utilities.CustomLogger as cl
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class BasePage:
@@ -16,6 +17,7 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15, poll_frequency=.5)
+        self.TA = TouchAction(self.driver)
 
     def getElement(self, locator, locatorType="xpath"):
         locatorType = locatorType.upper()
@@ -89,16 +91,27 @@ class BasePage:
         if attach:
             with allure.step(text):
                 allure.attach(self.driver.get_screenshot_as_png(), name=ScreenshotSection, attachment_type=AttachmentType.PNG)
-                if status == "INFO":
-                    self.logger.info(text)
-                elif status == "ERROR":
-                    self.logger.error(text)
         else:
             with allure.step(text):
                 pass
+        if status == "INFO":
+            self.logger.info(text)
+        elif status == "ERROR":
+            self.logger.error(text)
 
     def enterKeyCode(self, keyCodeToEnter):
         self.driver.press_keycode(int(keyCodeToEnter))
+
+    def scrollElementIntoView(self, textOnElementToScroll):
+        element = None
+        try:
+            element = self.wait.until(lambda x: x.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector()).scrollIntoView(text("' + textOnElementToScroll + '"))'))
+            self.log(f"{textOnElementToScroll} has been Scrolled Into View", True)
+        except:
+            self.log("Element could not be Scrolled Into View", status="error")
+        return element
+
+
 
 
 
