@@ -1,7 +1,12 @@
 from selenium.webdriver.support.wait import WebDriverWait
-
 from AppiumFramework.base.BasePage import BasePage
 
+
+"""
+This page contains locators and methods related to LoginPage
+such as enter email and password, click on login buttons and validate 
+a valid/invalid login
+"""
 
 class LoginPage(BasePage):
 

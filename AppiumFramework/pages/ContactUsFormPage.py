@@ -2,6 +2,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from AppiumFramework.base.BasePage import BasePage
 import AppiumFramework.utilities.CustomLogger as CL
 
+"""
+This page contains locators and methods related to Contact Us Form
+such as enter text, click on submit buttons and validate entered text 
+"""
 
 class EnterSomeValuePage(BasePage):
 

@@ -1,6 +1,11 @@
 from AppiumFramework.base.BasePage import BasePage
 
 
+"""
+This page contains locators and methods related to Activity Section 
+Basically we are doing just a swipe in all directions
+"""
+
 class ActivityPage(BasePage):
 
     margin = .001

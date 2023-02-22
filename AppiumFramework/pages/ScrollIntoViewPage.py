@@ -1,7 +1,10 @@
 from selenium.webdriver.support.wait import WebDriverWait
-
 from AppiumFramework.base.BasePage import BasePage
 
+
+"""
+This page contains locators and methods related to SrollIntoView section
+"""
 
 class ScrollIntoViewPage(BasePage):
     

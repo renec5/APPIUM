@@ -6,6 +6,8 @@ class Driver:
     def __init__(self):
         pass
 
+    # This one has the mobile application settings to make it work and
+    # creates and return the driver instance
     def getDriverMethod(self):
         desired_caps = {}
 

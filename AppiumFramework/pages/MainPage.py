@@ -1,8 +1,12 @@
 import logging
-
 from selenium.webdriver.support.wait import WebDriverWait
 from AppiumFramework.base.BasePage import BasePage
 import AppiumFramework.utilities.CustomLogger as CL
+
+"""
+This page contains locators to possible sections of the applications
+and move to the desired one 
+"""
 
 class MainPage(BasePage):
 

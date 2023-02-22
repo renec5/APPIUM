@@ -1,5 +1,4 @@
 import os
-import time
 import allure
 from datetime import datetime
 from allure_commons.types import AttachmentType
@@ -12,6 +11,7 @@ from appium.webdriver.common.touch_action import TouchAction
 
 class BasePage:
 
+    # Initialize the logger obnject
     logger = cl.customLogger()
 
     def __init__(self, driver):
@@ -19,6 +19,7 @@ class BasePage:
         self.wait = WebDriverWait(self.driver, 15, poll_frequency=.5)
         self.TA = TouchAction(self.driver)
 
+    # Gets web element according to his type
     def getElement(self, locator, locatorType="xpath"):
         locatorType = locatorType.upper()
         if locatorType == "ID":
@@ -42,6 +43,7 @@ class BasePage:
             self.log(f"ERROR Element with locatorType: {locatorType} and Locator: {locator} COULD NOT BE FOUND")
         return element
 
+    # Clicks an element, we need to provide locator and locatorType and it will find the element and click it
     def clickElement(self,locator, locatorType="xpath"):
         element = None
         try:
@@ -51,6 +53,7 @@ class BasePage:
         except:
             self.log(f"ERROR Element with locatorType: {locatorType} and locator: {locator} COULD NOT BE CLICKED")
 
+    # Sens some data to the web element.
     def sendKeys(self, data, locator, locatorType="xpath"):
         element = None
         try:
@@ -62,7 +65,7 @@ class BasePage:
             self.log(
                 f"ERROR DATA COULD NOT BE SENT TO Element with locatorType: {locatorType} and locator: {locator}")
 
-
+    # Takes a screenshot if needed and saves it in the path we specify on screenshotDirectory variable
     def takeScreenshot(self, attach=False, screenshotName="Screenshot", ssSection="ScreenshotSection"):
         fileName = screenshotName + "-" + datetime.now().strftime("%d_%m_%y_%H_%M_%S.%f") + ".png"
         screenshotDirectory =  "/Users/rene.cortes/PycharmProjects/AppiumPython/AppiumFramework/screenshots"
@@ -77,6 +80,7 @@ class BasePage:
         except:
             self.logger.error(f"ERROR - Unable to save Screenshot to path: {screenshotPath}")
 
+    # Validates if an element is displayed or not and returns True of False
     def isDisplayed(self, locator, locatorType="xpath"):
         element = None
         try:
@@ -86,6 +90,7 @@ class BasePage:
         except:
             return False
 
+    # Customized log function to enter message and attach scrrenshot if wanted
     def log(self, text, attach=False, status="info", ScreenshotSection=""):
         status = status.upper()
         if attach:
@@ -99,9 +104,11 @@ class BasePage:
         elif status == "ERROR":
             self.logger.error(text)
 
+    # Emulates a key pressed on our test
     def enterKeyCode(self, keyCodeToEnter):
         self.driver.press_keycode(int(keyCodeToEnter))
 
+    # We pass the TEXT (mandatory) present on the element we want to scroll into view and it will bring it up
     def scrollElementIntoView(self, textOnElementToScroll):
         element = None
         try:
