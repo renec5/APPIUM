@@ -3,7 +3,7 @@ AppiumFramework/screenshots/
 AppiumFramework/reports/allureReports/
 .pytest_cache/
 Code2LEad.log
-AppiumFramework/tests/.pytest_cache/
-AppiumFramework/tests/__pycache__/
-AppiumFramework/base/__pycache__/
-AppiumFramework/pages/__pycache__/
+AppiumFramework/tests/.pytest_cache/*
+AppiumFramework/tests/__pycache__/*
+AppiumFramework/base/__pycache__/*
+AppiumFramework/pages/__pycache__/*

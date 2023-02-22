@@ -44,7 +44,7 @@ class BasePage:
         return element
 
     # Clicks an element, we need to provide locator and locatorType and it will find the element and click it
-    def clickElement(self,locator, locatorType="xpath"):
+    def clickElement(self, locator, locatorType="xpath"):
         element = None
         try:
             element = self.getElement(locator, locatorType)
