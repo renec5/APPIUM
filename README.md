@@ -4,17 +4,62 @@ APPIUM
 APPIUM Repositories
 https://github.com/orgs/appium/repositories
 
-
+### INSTALACIONES PARA iOS
 Instalar python
 Instalar pycharm
+Instalar appium con el siguiente comando *npm install -g appium* esto intentara instalar appium en su version mas reciente
+Instalar appium con el siguiente comando *npm install -g appium@2.2.2* esto instalara appium version 2.2.2
+Instalar uiautomator *appium driver install uiautomator2*
+DEPRECATED Instalar appium-desktop in .dmg for IOS and .exe for windows format dowloading and double click on downloaded file from https://github.com/appium/appium-desktop/releases
+Instalar appium-inspector download in .dmg for IOS and .exe for windows format  and double click on dowloaded file from https://github.com/appium/appium-inspector/releases en la seccion de Assets
+Instalar android-studio download in .dmg for IOS and .exe for windows format  and double click on dowloaded file from https://developer.android.com/studio
+Instalar XCode from IOS app store solo para sistemas IOS
+Instalar el JDK de Java si aún no lo tenemos instalado de https://www.oracle.com/mx/java/technologies/downloads/
 Instalar appium library with pip install Appium-Python-Client
 Instalar appium server gui 
 Navigate to https://github.com/appium/appium-desktop and goto Releases section on GitHub, download the latest release
 Instalar appium inspector
 Instalar android studio and environment variables
-Once android studio is installed click on configure or more options -> sdk manager -> select the options we want to install and click Ok.
+Once android studio is installed click on Tools -> sdk manager -> select the options we want to install and click Ok.
 Instalar el JDK y ejecutar el comando en la terminal echo $(/usr/libexec/java_home)
 Copiar la ruta que devuelve y abrir appium server -> click edit configurations y pegar la ruta en el JAVA_HOME
+
+## Desinstalar appium en Mac
+npm uninstall -g appium
+Si al ejecutar appium --version sigue mostrando la version ejecutar el siguiente comando
+sudo rm -rf $(which appium) con esto debería removerlo totalmente del OS
+
+### INSTALACIONES PARA WINDOWS
+Instalar python
+Instalar pycharm
+Instalar appium server
+Instalar UiAutomator driver
+Instalar nodeJS
+Instalar appium ejecutando el siguiente comando en el command prompt ***npm install --locations=global appium@2.2.2***
+Instalar appium drivers ejecutando el siguiente comando en el comand prompt ***appium driver install uiautomator2***
+Para saber que appium drivers tenemos instalados ejecutamos el siguiente comando ***appium driver list --installed***
+
+
+
+## APPIUM Y LIBRERIAS DE SELENIUM
+Instalar appium client ejecutando el siguiente comando pip install Appium-Python-Client
+
+## Iniciar appium server en windows
+Para iniciar el appium server ejecutamos el siguiente comando en el command prompt ***appium --allow-cors***
+
+## Instalar drivers con appium
+appium driver install nombreDelDriver
+
+para windows:
+appium driver install uiautomator2
+
+para iOS
+appium driver install xcuitest
+
+
+## Actualizar drivers
+appium driver update nombreDelDriver
+
 
 AÑADIR ADB TO PATH ENVIRONMENT VARIABLES
 Copiamos la ruta donde se encuentra el Android/sdk: este dato lo podemos obtener de android studio -> more actions -> sdk manager, aquí podemos encontrar el Android sdk location
@@ -31,14 +76,27 @@ rene.cortes@WIZELINE ~ % adb devices
 List of devices attached
 
 
+### Java Install DOC in Mac
+In Latest version of Appium we need to configure the Java and set the JDK path in the Appium server.
+Java installation in Mac for Appium :
+Download the java and install it from : https://www.java.com/en/download/
+Open the command prompt and type “ echo $(/usr/libexec/java_home) “ , so that it will print the java path
+Copy the jdk path and past in Appium server at Java_Home path in “Edit configuration”
+Click on save and restart
+
 APPIUM CONFIGURATION
 ANDROID_HOME      /Users/rene.cortes/Library/Android/sdk
 JAVA_HOME              /Library/Java/JavaVirtualMachines/jdk-11.0.16.1.jdk/Contents/Home
 
+
+### Get the appID (App needs to be running to see it in the console output)
 ANDROID STUDIO es donde creamos el virtual device
 We need to launch the application on the emulator and then run the command below
 Con este comando obtenemos la info de appPakage  y appActivity, en el apartado de obscurrentwindow
- adb shell dumpsys window windows
+adb shell dumpsys window | grep -E "mCurrentFocus"
+Console Output
+mCurrentFocus=Window{... u0 com.miempresa.miapp/com.main.MainActivity}
+com.miempresa.miapp es el appId
 
 La primera parte hasta el / corresponde a appPackage y la segunda corresponde a appActivity
 mObscuringWindow=Window{5f10c43 u0 com.code2lead.kwad/com.code2lead.kwad.MainActivity}
@@ -48,7 +106,7 @@ Instalar npm install -g appium  si hay algún problema con permisos en Mac ejecu
 Sudo chown -R $USER /ysr/local/lib/node_modules
 
 Note
-If you facing below error while executing the code then add the args as shown in below solution.
+If you face below error while executing the code then add the args as shown in below solution.
 
 "Appium server has started but is not listening on /status within 60000ms timeout. Make sure proper values have been provided to --base-path, --address and --port process arguments."
 
@@ -107,7 +165,7 @@ mObscuringWindow=Window{ae9a967 u0 com.code2lead.kwad/com.code2lead.kwad.MainAct
 ISSUES:
 When an server issue is faced we can try to resolve it running below commands:
 adb uninstall io.appium.settings
-adb uninstall io.appium.uiautomator2.server adb uninstall io.appium.uiautomator2.server.test
+adb uninstall io.appium.uiautomator2.server && adb uninstall io.appium.uiautomator2.server.test
 
 HYBRID TEST
 
