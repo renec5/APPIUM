@@ -76,6 +76,14 @@ rene.cortes@WIZELINE ~ % adb devices
 List of devices attached
 
 
+### Environments variables on Windows
+To know the path we can open the tools > SDK Maneger and path will be displayed on
+Android SDK Location input
+
+we need to add this under ANDROID_HOME PathToAndroidSDK in environemt variables
+and also we need to add the Path environment variables the paths for platform and platrofm Tools
+which can be normally located on C:\Users\username\AppData\Local\Android\Sdk\
+
 ### Java Install DOC in Mac
 In Latest version of Appium we need to configure the Java and set the JDK path in the Appium server.
 Java installation in Mac for Appium :
